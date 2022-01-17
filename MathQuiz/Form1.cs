@@ -50,7 +50,7 @@ namespace MathQuiz
             multiplier = randomizer.Next(2, 11);
             timesLeftLabel.Text = multiplicand.ToString();
             timesRightLabel.Text = multiplier.ToString();
-            quotient.Value = 0;
+            product.Value = 0;
 
             divisor = randomizer.Next(2, 11);
             int temporaryQuotient = randomizer.Next(2, 11);
