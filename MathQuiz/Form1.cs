@@ -20,6 +20,12 @@ namespace MathQuiz
         int minuend;
         int subtrahend;
 
+        int multiplicand;
+        int multiplier;
+
+        int dividend;
+        int divisor;
+
         int timeLeft;
 
         /// <summary>
@@ -40,6 +46,19 @@ namespace MathQuiz
             minusRightLabel.Text = subtrahend.ToString();
             difference.Value = 0;
 
+            multiplicand = randomizer.Next(2, 11);
+            multiplier = randomizer.Next(2, 11);
+            timesLeftLabel.Text = multiplicand.ToString();
+            timesRightLabel.Text = multiplier.ToString();
+            quotient.Value = 0;
+
+            divisor = randomizer.Next(2, 11);
+            int temporaryQuotient = randomizer.Next(2, 11);
+            dividend = divisor * temporaryQuotient;
+            dividedLeftLabel.Text = dividend.ToString();
+            dividedRightLabel.Text = divisor.ToString();
+            quotient.Value = 0;
+
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
@@ -51,9 +70,10 @@ namespace MathQuiz
         /// <returns>True if the answer's correct, false otherwise.</returns>
         public bool CheckTheAnswer()
         {
-            return
-                (addend1 + addend2 == sum.Value) &&
-                (minuend - subtrahend == difference.Value);
+            return (addend1 + addend2 == sum.Value)
+                && (minuend - subtrahend == difference.Value)
+                && (multiplicand * multiplier == product.Value)
+                && (dividend / divisor == quotient.Value);
         }
 
         public Form1()
@@ -92,6 +112,8 @@ namespace MathQuiz
                 MessageBox.Show("You didn't finish in time.", "Sorry!");
                 sum.Value = addend1 + addend2;
                 difference.Value = minuend - subtrahend;
+                product.Value = multiplicand * multiplier;
+                quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
             }
         }
