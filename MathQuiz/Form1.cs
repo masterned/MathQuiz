@@ -38,6 +38,16 @@ namespace MathQuiz
             timer1.Start();
         }
 
+        /// <summary>
+        /// Check the answer to see if the user got everything right.
+        /// </summary>
+        /// <returns>True if the answer's correct, false otherwise.</returns>
+        public bool CheckTheAnswer()
+        {
+            if (addend1 + addend2 == sum.Value) return true;
+            return false;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -56,7 +66,13 @@ namespace MathQuiz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
+            if (CheckTheAnswer())
+            {
+                timer1.Stop();
+                MessageBox.Show("You got all the questions right!", "Congratulations!");
+                startButton.Enabled = true;
+            }
+            else if (timeLeft > 0)
             {
                 timeLeft -= 1;
                 timeLabel.Text = $"{timeLeft} seconds";
