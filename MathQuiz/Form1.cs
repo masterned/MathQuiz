@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -134,6 +135,30 @@ namespace MathQuiz
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
             }
+        }
+
+        private void sum_ValueChanged(object sender, EventArgs e)
+        {
+            if (sender is NumericUpDown && (addend1 + addend2 == sum.Value))
+                SystemSounds.Exclamation.Play();
+        }
+
+        private void difference_ValueChanged(object sender, EventArgs e)
+        {
+            if (sender is NumericUpDown && (minuend - subtrahend == difference.Value))
+                SystemSounds.Exclamation.Play();
+        }
+
+        private void product_ValueChanged(object sender, EventArgs e)
+        {
+            if (sender is NumericUpDown && (multiplicand * multiplier == product.Value))
+                SystemSounds.Exclamation.Play();
+        }
+
+        private void quotient_ValueChanged(object sender, EventArgs e)
+        {
+            if (sender is NumericUpDown && (dividend / divisor == quotient.Value))
+                SystemSounds.Exclamation.Play();
         }
     }
 }
