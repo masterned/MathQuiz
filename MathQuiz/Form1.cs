@@ -94,11 +94,16 @@ namespace MathQuiz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (timeLeft == 5)
+            {
+                timeLabel.BackColor = Color.Red;
+            }
             if (CheckTheAnswer())
             {
                 timer1.Stop();
                 MessageBox.Show("You got all the questions right!", "Congratulations!");
                 startButton.Enabled = true;
+                timeLabel.BackColor = DefaultBackColor;
             }
             else if (timeLeft > 0)
             {
@@ -115,6 +120,7 @@ namespace MathQuiz
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+                timeLabel.BackColor = DefaultBackColor;
             }
         }
 
